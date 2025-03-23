@@ -6,4 +6,3 @@ env/
 # Ignore variables environment
 .env
 
-alembic.ini

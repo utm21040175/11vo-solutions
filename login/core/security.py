@@ -6,7 +6,7 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 JWT_CONFIG = {
-    "alg": "H256"
+    "alg": "HS256"
 }
 
 def create_jwt_token(data: dict):

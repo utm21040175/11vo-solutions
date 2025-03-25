@@ -5,6 +5,7 @@ from sqlalchemy import pool
 
 from core.database import Base
 from login.models.user import User
+from products.models.products import Product
 
 from alembic import context
 from dotenv import load_dotenv

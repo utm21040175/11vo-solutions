@@ -4,8 +4,8 @@ from core.database import Base
 import enum
 
 class UserRole(enum.Enum):
-    ADMIN = "admin"
-    USER = "user"
+    ADMIN = "ADMIN"
+    USER = "USER"
 
 class User(Base):
     __tablename__ = "users"

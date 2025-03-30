@@ -3,8 +3,8 @@ from enum import Enum
 
 # Define aviable roles as schema for validation
 class UserRole(str, Enum):
-    ADMIN = "admin"
-    USER = "user"
+    ADMIN = "ADMIN"
+    USER = "USER"
 
 # User schema for creation
 class UserCreate(BaseModel):
@@ -18,7 +18,7 @@ class UserCreate(BaseModel):
     @classmethod
     def validate_roles(cls, v):
         if isinstance(v, str):
-            v = v.lower()
+            v = v.upper()
         return UserRole(v)
 
 # Schema to return user without password

@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, Date, Index
+from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
+from sqlalchemy.orm import relationship
 from core.database import Base
 
 
@@ -12,3 +13,5 @@ class Product(Base):
     stock = Column(Integer, nullable=False)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime)
+    
+    cart_items = relationship("Cart", back_populates="product")

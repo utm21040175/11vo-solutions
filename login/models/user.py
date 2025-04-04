@@ -19,3 +19,4 @@ class User(Base):
     role = Column(Enum(UserRole), default=UserRole.USER)
     
     cart = relationship("Cart", back_populates="user", cascade="all, delete-orphan")
+    orders = relationship("Order", back_populates="user")

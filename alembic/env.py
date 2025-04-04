@@ -7,6 +7,7 @@ from core.database import Base
 from login.models.user import User
 from products.models.products import Product
 from products.models.cart import Cart
+from order.models.order import Order
 
 from alembic import context
 from dotenv import load_dotenv

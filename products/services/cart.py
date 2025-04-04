@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from products.models.cart import Cart
+from products.schemas.cart import CartItem, CartResponse
 from products.models.products import Product
 
 def add_to_cart(db: Session, user_id: int, product_id: int, quantity: int):
@@ -28,6 +29,23 @@ def add_to_cart(db: Session, user_id: int, product_id: int, quantity: int):
     db.commit()
     db.refresh(cart_item)
     return cart_item
+
+def get_cart(db: Session, user_id: int):
+    cart_items = db.query(Cart).filter(Cart.user_id == user_id).all()
+    
+    if not cart_items:
+        return None
+
+    items = [CartItem(product_id=item.product_id, quantity=item.quantity) for item in cart_items]
+    
+    total_price = sum(item.total_price for item in cart_items)
+    
+    return CartResponse(
+        id=cart_items[0].id,
+        user_id=user_id,
+        items=items,
+        total_price=total_price
+    )
 
 def remove_from_cart(db: Session, user_id: int, product_id: int):
     # Find the cart item

@@ -8,7 +8,7 @@ class CartItem(BaseModel):
 class CartResponse(BaseModel):
     id: int
     user_id: int
-    items: List[CartItem]
+    items: List[CartItem] = []
     total_price: float
     
     class Config:
